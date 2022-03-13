@@ -1,4 +1,4 @@
-export interface ImageProps {
-  url: string
-  alternativeText: string
+import { ParsedUrlQuery } from 'querystring'
+export interface IParams extends ParsedUrlQuery {
+  slug: string
 }

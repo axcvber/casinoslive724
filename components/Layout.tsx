@@ -1,22 +1,22 @@
-import { gql, useQuery } from '@apollo/client'
-import styled from '@emotion/styled'
 import { Container } from '@mui/material'
-import React, { ReactChild } from 'react'
-import Navbar from './Navbar'
+import React, { createContext, ReactChild, useContext } from 'react'
+import Navbar from './navbar/Navbar'
+import { Theme as CmsTheme } from '../generated'
 
 interface ILayout {
   children: ReactChild
-  cmsTheme: any
+  cmsTheme: CmsTheme
 }
+
+const GlobalContext = createContext<Partial<CmsTheme>>({})
+export const useGlobalContext = () => useContext(GlobalContext)
 
 const Layout: React.FC<ILayout> = ({ children, cmsTheme }) => {
   return (
-    <>
-      <Navbar logo={cmsTheme.logo.data.attributes} logoTitle={cmsTheme.logoTitle} />
-      <Container>
-        <main>{children}</main>
-      </Container>
-    </>
+    <GlobalContext.Provider value={cmsTheme}>
+      <Navbar />
+      <Container component={'main'}>{children}</Container>
+    </GlobalContext.Provider>
   )
 }
 

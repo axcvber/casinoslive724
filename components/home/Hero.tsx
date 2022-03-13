@@ -1,9 +1,11 @@
-import { Button, Container, Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import Image from 'next/image'
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import useLocale from '../../locales/useLocale'
+import Background from '../Background'
+import heroBg from '../../public/hero.jpg'
+import SocialNetworks from '../SocialNetworks'
+import { useRouter } from 'next/router'
 
 interface IHero {
   title: string
@@ -12,9 +14,10 @@ interface IHero {
 
 const Hero: React.FC<IHero> = ({ title, subtitle }) => {
   const t = useLocale()
+  const router = useRouter()
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box component='section'>
       <Box sx={{ position: 'relative', height: '85vh' }}>
         <Box
           sx={{
@@ -29,58 +32,40 @@ const Hero: React.FC<IHero> = ({ title, subtitle }) => {
             },
           }}
         >
-          <Typography variant='h2' sx={{ fontStyle: 'italic', fontFamily: "'Teko', sans-serif" }}>
+          <Typography
+            component='h1'
+            variant='h2'
+            sx={{ fontStyle: 'italic', fontFamily: 'Teko', textShadow: '0 0 3px #000' }}
+          >
             {title}
           </Typography>
 
           <Typography
             color='gray'
             sx={{
+              letterSpacing: '0.5px',
               mb: 2,
               maxWidth: {
                 md: '350px',
                 sm: '300px',
                 xs: '280px',
               },
-              fontFamily: "'Teko', sans-serif",
+              fontFamily: 'Teko',
+              textShadow: '0 0 3px #000',
             }}
           >
             {subtitle}
           </Typography>
-          <Button variant='contained'>{t.button.hero}</Button>
+
+          <Box mb={3} display='flex' alignItems='center'>
+            <SocialNetworks />
+          </Box>
+          <Button variant='contained' onClick={() => router.push('/casinos')}>
+            {t.button.hero}
+          </Button>
         </Box>
       </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          // filter: 'brightness(50%)',
-
-          // width: '100%',
-          // minHeight: '100vh',
-          // filter: 'brightness(50%)',
-
-          zIndex: -1,
-          // background: 'linear-gradient(#eb01a5, #0C1127)',
-
-          '&:after': {
-            content: '""',
-            // background: 'linear-gradient(0deg, rgba(12,17,39,1) 0%, rgba(12,17,39,1) 0%, rgba(0,0,0,0) 100%)',
-            background: 'linear-gradient(0deg, rgba(12,17,39,1) 0%, rgba(255,255,255,0) 50%, rgba(12,17,39,1) 100%)',
-            display: 'block',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          },
-        }}
-      >
-        <Image layout='fill' objectFit='cover' objectPosition={'top'} src='/orginal.jpg' alt='hero-image' />
-      </Box>
+      <Background src={heroBg} alt='hero-background' />
     </Box>
   )
 }

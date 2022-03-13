@@ -16,10 +16,6 @@ export const tr = {
       title: 'Kuponlar',
       path: '/coupons',
     },
-    // {
-    //   title: 'Canlı Skor',
-    //   path: '/live-score',
-    // },
     {
       title: 'Canlı Tv',
       path: 'http://betslive724tv.com',
@@ -37,6 +33,7 @@ export const tr = {
     details: 'Detaylar',
     contact: 'Bize Ulaşın',
     hero: 'Tüm kumarhanelere git',
+    open: 'Açık',
   },
   modal: {
     contactUs: {
@@ -76,7 +73,35 @@ export const tr = {
   },
   page404: {
     title: 'Ayy! Sayfa bulunamadı',
+    subtitle: 'Bu sayfa mevcut değil veya kaldırıldı!',
     btn: 'Eve geri dön',
+  },
+  cardTable: {
+    header: {
+      home: 'En iyi kumarhaneler',
+      casino: 'Tüm Kumarhaneler',
+      bonus: 'Tüm Bonuslar',
+      coupon: 'Tüm Kuponlar',
+    },
+    emptyTitle: 'Veri bulunamadı.',
+    error: {
+      title: 'Hoop! Bir Şeyler yanlış gitti',
+      subtitle: 'Veriler yüklenirken bir hata oluştu.',
+      button: 'Yeniden dene',
+    },
+  },
+  scrollSidebar: {
+    title: 'Bölüme bakın',
+  },
+  casinoItem: {
+    btnToSite: 'Siteye git',
+    bonusesLabel: 'Bonuslar',
+    articleTitle: 'Kumarhane detayları',
+  },
+  bonusItem: {
+    btnToSite: 'Bonus al',
+    btnToCasino: 'Kumarhane detayları',
+    articleTitle: 'Bonus Ayrıntıları',
   },
   seo: {
     homePage: {

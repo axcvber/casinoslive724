@@ -1,13 +1,8 @@
-import React, { useState, createContext, useContext, ReactElement } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import BonusesModal from './BonusesModal'
 import ContactUsModal from './ContactUsModal'
 import CouponModal from './CouponModal'
 import InitialModal from './InitialModal'
-
-// export const MODAL_TYPES = {
-//   CONTACT_US_MODAL: 'CONTACT_US_MODAL',
-//   INITIAL_MODAL: 'INITIAL_MODAL',
-// }
 
 export enum MODAL_TYPES {
   CONTACT_US_MODAL = 'CONTACT_US_MODAL',

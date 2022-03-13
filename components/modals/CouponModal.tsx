@@ -1,17 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
-import { useGlobalModalContext } from './GlobalModal'
 import Modal from '../Modal'
 import { Box, Button } from '@mui/material'
 import { useRouter } from 'next/router'
+import { useGlobalModalContext } from './GlobalModal'
+import { Maybe, UploadFile } from '../../generated'
 
 interface ICouponModal {
-  image: any
+  img: Maybe<UploadFile> | undefined
   link: string
   title: string
 }
 
-const CouponModal: React.FC<ICouponModal> = ({ title, image, link }) => {
+const CouponModal: React.FC<ICouponModal> = ({ title, img, link }) => {
   const router = useRouter()
 
   const handlePlayClick = () => {
@@ -22,8 +23,13 @@ const CouponModal: React.FC<ICouponModal> = ({ title, image, link }) => {
   return (
     <Modal width={'420px'} title={title} subtitle='' open={store.isOpen} onClose={hideModal} isClosingOverlay>
       <Box>
-        <Image width={image.width} height={image.height} src={image.url} alt={image.alternativeText} />
-        <Box sx={{ mt: 2, float: 'right' }}>
+        <Image
+          width={img?.width || 0}
+          height={img?.height || 0}
+          src={img?.url || ''}
+          alt={img?.alternativeText || ''}
+        />
+        <Box sx={{ mt: 1, float: 'right' }}>
           <Button onClick={handlePlayClick} sx={{ mr: 1 }} variant='contained'>
             Play
           </Button>

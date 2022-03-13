@@ -54,8 +54,6 @@ const Modal: React.FC<IModal> = ({
           overflowY: 'visible',
           backgroundImage: 'none',
           borderRadius: '10px',
-          // width: '320px',
-          // bgcolor: 'primary.dark',
         },
       }}
     >
@@ -69,6 +67,7 @@ const Modal: React.FC<IModal> = ({
           transform: 'rotate(0deg)',
           transition: 'transform ease .3s',
           cursor: 'pointer',
+          display: 'flex',
           '&:hover': {
             transform: 'rotate(180deg)',
           },
@@ -76,20 +75,18 @@ const Modal: React.FC<IModal> = ({
       >
         <VscChromeClose fontSize={28} />
       </Box>
-      {title && <DialogTitle sx={{ textTransform: 'uppercase' }}>{title}</DialogTitle>}
+      {title && (
+        <DialogTitle sx={{ textTransform: 'uppercase', borderBottom: '2px solid #4A70EB' }}>{title}</DialogTitle>
+      )}
 
-      <DialogContent sx={{ padding: disableGutters ? 0 : '20px 24px' }}>
+      <DialogContent sx={{ padding: disableGutters ? 0 : '20px 24px !important' }}>
         {subtitle && (
-          <DialogContentText sx={{ pb: 1, fontSize: 14, color: 'gray' }} id='alert-dialog-slide-description'>
+          <DialogContentText sx={{ pb: 2, fontSize: 14, color: 'gray' }} id='alert-dialog-slide-description'>
             {subtitle}
           </DialogContentText>
         )}
         {children}
       </DialogContent>
-      {/* <DialogActions>
-        <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
-      </DialogActions> */}
     </Dialog>
   )
 }

@@ -2,8 +2,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  // uri: `${process.env.API_URL}/graphql`,
-  uri: 'http://localhost:1337/graphql',
+  uri: process.env.SERVER_API,
   defaultOptions: {
     watchQuery: {
       fetchPolicy: 'no-cache',

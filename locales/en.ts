@@ -16,10 +16,6 @@ export const en = {
       title: 'Coupons',
       path: '/coupons',
     },
-    // {
-    //   title: 'Live score',
-    //   path: '/live-score',
-    // },
     {
       title: 'Live tv',
       path: 'http://betslive724tv.com',
@@ -37,6 +33,7 @@ export const en = {
     details: 'Details',
     contact: 'Contact us',
     hero: 'Go to all casinos',
+    open: 'Open',
   },
   modal: {
     contactUs: {
@@ -76,7 +73,35 @@ export const en = {
   },
   page404: {
     title: 'Ooops! Page not found',
+    subtitle: "This page doesn't exist or was removed!",
     btn: 'Back to Home',
+  },
+  cardTable: {
+    header: {
+      home: 'Top casinos',
+      casino: 'All Casinos',
+      bonus: 'All Bonuses',
+      coupon: 'All Coupons',
+    },
+    emptyTitle: 'No data found.',
+    error: {
+      title: 'Oops, something went wrong',
+      subtitle: 'An error occurred while loading data.',
+      button: 'Retry',
+    },
+  },
+  scrollSidebar: {
+    title: 'See section',
+  },
+  casinoItem: {
+    btnToSite: 'Go to site',
+    bonusesLabel: 'Bonuses',
+    articleTitle: 'Casino Details',
+  },
+  bonusItem: {
+    btnToSite: 'Get bonus',
+    btnToCasino: 'Casino details',
+    articleTitle: 'Bonus Details',
   },
   seo: {
     homePage: {

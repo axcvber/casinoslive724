@@ -4,7 +4,6 @@ import { ThemeProvider, responsiveFontSizes } from '@mui/material/styles'
 import { SnackbarProvider } from 'notistack'
 import { GlobalModal } from '../components/modals/GlobalModal'
 import theme from '.'
-import Layout from '../components/Layout'
 
 const Theme: React.FC<{ children: ReactChild }> = ({ children }) => {
   const rTheme = responsiveFontSizes(theme)

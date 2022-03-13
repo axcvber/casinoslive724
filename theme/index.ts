@@ -13,9 +13,13 @@ const theme = createTheme({
         '*::after, *::before': {
           boxSizing: 'border-box',
         },
+        html: {
+          // marginRight: 'calc(-1 * (100vw - 100%))',
+        },
         body: {
           lineHeight: 1,
           fontFamily: 'Fira Sans',
+          overflowX: 'hidden',
           'ul, li': {
             listStyle: 'none',
           },
@@ -31,6 +35,13 @@ const theme = createTheme({
         root: {
           fontFamily: '"Oswald", sans-serif',
           fontWeight: 400,
+        },
+      },
+    },
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
         },
       },
     },

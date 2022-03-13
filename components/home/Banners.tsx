@@ -5,59 +5,11 @@ import { styled } from '@mui/material/styles'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { GrPrevious, GrNext } from 'react-icons/gr'
+import { ComponentBannerGifsBannerGifs, Maybe } from '../../generated'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-const bannersArr = [
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-  {
-    link: 'das',
-    gifUrl:
-      'https://res.cloudinary.com/betslive/image/upload/v1643141641/m_ad_4_min_df86808f89.webp?updated_at=2022-01-25T20:14:03.255Z',
-  },
-]
-
-interface IBanners {
-  id: number
-  link: string
-  gif: any
-}
-
-const Banners: React.FC<{ arr: Array<IBanners> }> = ({ arr }) => {
+const Banners: React.FC<{ data: Maybe<ComponentBannerGifsBannerGifs>[] }> = ({ data }) => {
   const prevRef = React.useRef(null)
   const nextRef = React.useRef(null)
   return (
@@ -85,20 +37,21 @@ const Banners: React.FC<{ arr: Array<IBanners> }> = ({ arr }) => {
           },
         }}
       >
-        {arr.map((item) => (
-          <SwiperSlide key={item.id} tag='li'>
-            <a href={item.link} target='_blank' rel='noreferrer'>
-              <Image
-                priority
-                src={item.gif.data.attributes.url}
-                layout='responsive'
-                width={593}
-                height={169}
-                alt={item.gif.data.attributes.alternativeText}
-              />
-            </a>
-          </SwiperSlide>
-        ))}
+        {data &&
+          data.map((item) => (
+            <SwiperSlide key={item?.id} tag='li'>
+              <a href={item?.link} target='_blank' rel='noreferrer'>
+                <Image
+                  priority
+                  src={item?.gif.data?.attributes?.url || ''}
+                  layout='responsive'
+                  width={593}
+                  height={169}
+                  alt={item?.gif.data?.attributes?.alternativeText || ''}
+                />
+              </a>
+            </SwiperSlide>
+          ))}
 
         <Arrow className='leftArrow' ref={prevRef}>
           <GrPrevious />

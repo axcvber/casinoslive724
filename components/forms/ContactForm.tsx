@@ -51,14 +51,10 @@ const ContactForm = () => {
 
   const onSubmit: SubmitHandler<IContactFormInputs> = async (formData) => {
     // await FormApi.sendForm(formData)
-
     const { telegram, email, name, message } = formData
-    let token = '5113782392:AAHC-Tx-3GUvo8E6YSUaVk-Nrr8fBwlQX3s'
-    let chatId = -1001651942524
     const telegramView = `<b>Telegram</b>: ${telegram}%0A<b>Email</b>: ${email}%0A<b>Name</b>: ${name}%0A<b>Message</b>: ${message}`
 
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${telegramView}&parse_mode=html`
-
+    const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${process.env.TELEGRAM_CHAT_ID}&text=${telegramView}&parse_mode=html`
     try {
       const response = await fetch(url)
       if (!response.ok) {

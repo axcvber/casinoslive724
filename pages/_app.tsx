@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { AppProps } from 'next/app'
+import { AppContext, AppProps } from 'next/app'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '../utils/createEmotionCache'
 import Layout from '../components/Layout'
@@ -12,23 +12,20 @@ import * as ga from '../utils/ga'
 import Theme from '../theme/Theme'
 // import '../styles/globals.css'
 import App from 'next/app'
+import { CmsThemeQuery, Theme as CmsTheme } from '../generated'
+import { CMS_THEME_QUERY } from '../graphql/pages-query'
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
-  cmsTheme: any
 }
-let cmsThemeCache: any
 export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, cmsTheme, pageProps } = props
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+  const { cmsTheme } = pageProps
+
   const router = useRouter()
   const [loading, setLoading] = React.useState<boolean>(false)
-  console.log('cmsTheme', cmsTheme)
-
-  React.useEffect(() => {
-    cmsThemeCache = cmsTheme
-  }, [])
 
   React.useEffect(() => {
     const handleStart = (url: string) => {
@@ -57,6 +54,7 @@ export default function MyApp(props: MyAppProps) {
       <Head>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
         <meta name='google' content='notranslate' />
+        <link rel='shortcut icon' href={cmsTheme.icon.data?.attributes?.url} />
       </Head>
 
       <ApolloProvider client={client}>
@@ -74,40 +72,10 @@ export default function MyApp(props: MyAppProps) {
   )
 }
 
-MyApp.getInitialProps = async () => {
-  if (cmsThemeCache) {
-    return { cmsTheme: cmsThemeCache }
-  }
-
-  const { data } = await client.query({
-    query: gql`
-      query {
-        theme {
-          data {
-            attributes {
-              logoTitle
-              icon {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-              logo {
-                data {
-                  attributes {
-                    url
-                    alternativeText
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
+MyApp.getInitialProps = async (ctx: AppContext) => {
+  const appProps = await App.getInitialProps(ctx)
+  const { data } = await client.query<CmsThemeQuery>({
+    query: CMS_THEME_QUERY,
   })
-
-  cmsThemeCache = data.theme.data?.attributes
-  return { cmsTheme: data.theme.data?.attributes }
+  return { ...appProps, pageProps: { cmsTheme: data.theme?.data?.attributes } }
 }

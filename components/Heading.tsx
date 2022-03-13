@@ -1,64 +1,74 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Paper, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
-
+import { Maybe, UploadFile } from '../generated'
 interface IHeading {
   title: string
   subtitle: string
-  img: any
+  img: Maybe<UploadFile> | undefined
 }
 
 const Heading: React.FC<IHeading> = ({ title, subtitle, img }) => {
   return (
-    <Box
+    <Paper
+      elevation={10}
       sx={{
         width: '100%',
-        minHeight: '400px',
+        height: {
+          xs: '300px',
+          sm: '400px',
+        },
         position: 'relative',
-        borderRadius: '10px',
+        borderRadius: 1,
         overflow: 'hidden',
-        boxShadow: '8px 8px 8px 0px rgba(0, 0, 0, 0.35)',
+        my: 1,
+        bgcolor: 'background.default',
+        backgroundImage: 'none',
       }}
     >
       <Box
         sx={{
           position: 'relative',
           zIndex: 1,
-          maxWidth: '450px',
+          maxWidth: {
+            xs: '100%',
+            sm: '450px',
+          },
           padding: '20px',
-          height: '400px',
+          height: '100%',
           '&:after': {
             content: '""',
             display: 'block',
             position: 'absolute',
             top: 0,
             left: 0,
-            width: '110%',
+            width: '100%',
             height: '100%',
             zIndex: -1,
-            transform: 'skewX(-20deg) translateX(-70px)',
-            background: 'rgba(0,0,0,0.7)',
+            transform: {
+              xs: 'skewX(0deg) translateX(0)',
+              sm: 'skewX(-20deg) translateX(-70px) scale(1.2)',
+            },
+            background: 'rgba(0,0,0,0.6)',
           },
         }}
       >
         <Typography color='secondary' variant='h3' mb={1}>
           {title}
         </Typography>
-        <Typography>{subtitle}</Typography>
+        <Typography sx={{ textShadow: '0 0 3px #000', wordWrap: 'break-word' }}>{subtitle}</Typography>
       </Box>
 
-      <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, filter: 'brightness(90%)' }}>
-        <Image
-          priority
-          src={img.url}
-          placeholder='blur'
-          blurDataURL={img.url}
-          layout='fill'
-          objectFit='cover'
-          alt={img.alternativeText}
-        />
-      </Box>
-    </Box>
+      <Image
+        priority
+        src={img?.url || ''}
+        placeholder='blur'
+        blurDataURL={img?.url || ''}
+        layout='fill'
+        objectFit='cover'
+        alt={img?.alternativeText || ''}
+      />
+    </Paper>
   )
 }
 
