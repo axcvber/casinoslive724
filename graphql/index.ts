@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: process.env.SERVER_API,
+  uri: `https://casinoslive.herokuapp.com/graphql`,
   defaultOptions: {
     watchQuery: {
       fetchPolicy: 'no-cache',
