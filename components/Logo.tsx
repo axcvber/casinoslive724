@@ -2,11 +2,11 @@ import { Box, Theme, Typography, useMediaQuery } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import { useGlobalContext } from './Layout'
+import { useAppContext } from '../theme/Theme'
 
 const Logo = () => {
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-  const { logo, logoTitle } = useGlobalContext()
+  const { logo, logoTitle } = useAppContext()
   return (
     <Link href='/' passHref>
       <Box component='a' display={'flex'} alignItems={'center'}>

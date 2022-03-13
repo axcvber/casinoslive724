@@ -58,11 +58,11 @@ export default function MyApp(props: MyAppProps) {
       </Head>
 
       <ApolloProvider client={client}>
-        <Theme>
+        <Theme cmsTheme={cmsTheme}>
           {loading ? (
             <LoadingScreen />
           ) : (
-            <Layout cmsTheme={cmsTheme}>
+            <Layout>
               <Component {...pageProps} />
             </Layout>
           )}

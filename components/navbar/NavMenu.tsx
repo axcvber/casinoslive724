@@ -2,12 +2,12 @@ import { styled } from '@mui/material/styles'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useLocale from '../../locales/useLocale'
-import { useGlobalContext } from '../Layout'
+import { useAppContext } from '../../theme/Theme'
 
 const NavMenu = () => {
   const t = useLocale()
   const router = useRouter()
-  const ctx = useGlobalContext()
+  const { liveTvSiteLink } = useAppContext()
 
   return (
     <nav>
@@ -23,7 +23,7 @@ const NavMenu = () => {
             </ListItem>
           ) : (
             <ListItem key={inx}>
-              <NavLink data-hover={page.title} href={ctx?.liveTvSiteLink} target='_blank' rel='noreferrer'>
+              <NavLink data-hover={page.title} href={liveTvSiteLink} target='_blank' rel='noreferrer'>
                 {page.title}
               </NavLink>
             </ListItem>

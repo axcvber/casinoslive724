@@ -44,7 +44,7 @@ export const BONUSES_QUERY = gql`
 
 export const BONUS_ITEM_PROPS_QUERY = gql`
   query BonusItemProps($bonusSlug: String!, $locale: I18NLocaleCode) {
-    bonuses(filters: { slug: { eq: $bonusSlug } }, locale: $locale) {
+    bonuses(filters: { slug: { eq: $bonusSlug } }, sort: "id:desc", locale: $locale) {
       data {
         attributes {
           title

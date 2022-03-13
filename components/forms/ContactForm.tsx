@@ -1,5 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, Typography } from '@mui/material'
 import useLocale from '../../locales/useLocale'
 import { Field } from '../Field'
 import * as yup from 'yup'
@@ -8,7 +7,6 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { IoMailOutline } from 'react-icons/io5'
 import { FiUser } from 'react-icons/fi'
 import { FaTelegramPlane } from 'react-icons/fa'
-import { FormApi } from '../api/form-api'
 import { useSnackbar } from 'notistack'
 import { useGlobalModalContext } from '../modals/GlobalModal'
 export interface IContactFormInputs {
@@ -50,10 +48,8 @@ const ContactForm = () => {
   const { hideModal } = useGlobalModalContext()
 
   const onSubmit: SubmitHandler<IContactFormInputs> = async (formData) => {
-    // await FormApi.sendForm(formData)
     const { telegram, email, name, message } = formData
     const telegramView = `<b>Telegram</b>: ${telegram}%0A<b>Email</b>: ${email}%0A<b>Name</b>: ${name}%0A<b>Message</b>: ${message}`
-
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${process.env.TELEGRAM_CHAT_ID}&text=${telegramView}&parse_mode=html`
     try {
       const response = await fetch(url)

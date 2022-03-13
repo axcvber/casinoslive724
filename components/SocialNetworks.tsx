@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { styled } from '@mui/material/styles'
-import { useGlobalContext } from './Layout'
+import { useAppContext } from '../theme/Theme'
 
 const SocialNetworks = () => {
-  const { socialNetworks } = useGlobalContext()
+  const { socialNetworks } = useAppContext()
   return (
     <Wrapper>
       {socialNetworks &&
