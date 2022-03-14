@@ -10,6 +10,7 @@ import { COUPONS_PAGE_QUERY } from '../../graphql/pages-query'
 import { useRouter } from 'next/router'
 import useLocale from '../../locales/useLocale'
 import Background from '../../components/Background'
+import { NextSeo } from 'next-seo'
 
 interface ICouponsPage {
   couponsPage: CouponsPage
@@ -28,6 +29,29 @@ const Coupons: NextPage<ICouponsPage> = ({ couponsPage }) => {
   })
   return (
     <>
+      <NextSeo
+        title={couponsPage.seo.metaTitle}
+        description={couponsPage.seo.metaDescription}
+        canonical={couponsPage.seo.canonicalURL}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: couponsPage.seo.keywords,
+          },
+        ]}
+        openGraph={{
+          title: couponsPage.seo.metaTitle,
+          description: couponsPage.seo.metaDescription,
+          url: couponsPage.seo.canonicalURL,
+          images: [
+            {
+              url: couponsPage.seo.metaImage.data?.attributes?.url || '',
+              width: 400,
+              height: 300,
+            },
+          ],
+        }}
+      />
       <Heading
         img={couponsPage.heading.image.data?.attributes}
         title={couponsPage.heading.title}

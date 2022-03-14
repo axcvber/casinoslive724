@@ -14,6 +14,8 @@ import Theme from '../theme/Theme'
 import App from 'next/app'
 import { CmsThemeQuery, Theme as CmsTheme } from '../generated'
 import { CMS_THEME_QUERY } from '../graphql/pages-query'
+import { DefaultSeo } from 'next-seo'
+import GlobalSeo from '../components/GlobalSeo'
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 
@@ -51,12 +53,11 @@ export default function MyApp(props: MyAppProps) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
-        <meta name='google' content='notranslate' />
-        <link rel='shortcut icon' href={cmsTheme.icon.data?.attributes?.url} />
-      </Head>
-
+      <GlobalSeo
+        icon={cmsTheme.icon.data?.attributes?.url}
+        canonical={'https://casinoslive724.com'}
+        siteName={cmsTheme.logoTitle}
+      />
       <ApolloProvider client={client}>
         <Theme cmsTheme={cmsTheme}>
           {loading ? (

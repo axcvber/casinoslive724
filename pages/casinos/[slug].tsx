@@ -12,6 +12,7 @@ import { IParams } from '../../types'
 import Background from '../../components/Background'
 import React from 'react'
 import ScrollTop from '../../components/ScrollTop'
+import { NextSeo } from 'next-seo'
 
 interface ICasinoItem {
   casino: Casino
@@ -21,33 +22,59 @@ const CasinoItem: NextPage<ICasinoItem> = ({ casino }) => {
   const t = useLocale()
 
   return (
-    <Box mt={1} position='relative'>
-      <Grid container gap={2}>
-        <Grid item xs={12}>
-          <CasinoHeader
-            name={casino.name}
-            rating={casino.rating}
-            logo={casino.logo}
-            referralLink={casino.referralLink}
-            isBonus={!!casino.bonuses?.data.length}
-            slug={casino.slug}
-            features={casino.casinoHeading}
-          />
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={9} lg={9}>
-            <Article title={t.casinoItem.articleTitle} sections={casino.sections} />
-          </Grid>
-          <Grid item xs={0} md={3} lg={3}>
-            <ScrollSidebar sections={casino.sections.filter((item) => item?.title)} />
-          </Grid>
-        </Grid>
-      </Grid>
+    <>
+      <NextSeo
+        title={casino.seo.metaTitle}
+        description={casino.seo.metaDescription}
+        canonical={casino.seo.canonicalURL}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: casino.seo.keywords,
+          },
+        ]}
+        openGraph={{
+          title: casino.seo.metaTitle,
+          description: casino.seo.metaDescription,
+          url: casino.seo.canonicalURL,
+          images: [
+            {
+              url: casino.seo.metaImage.data?.attributes?.url || '',
+              width: 400,
+              height: 300,
+            },
+          ],
+        }}
+      />
 
-      <ScrollTop />
+      <Box mt={1} position='relative'>
+        <Grid container gap={2}>
+          <Grid item xs={12}>
+            <CasinoHeader
+              name={casino.name}
+              rating={casino.rating}
+              logo={casino.logo}
+              referralLink={casino.referralLink}
+              isBonus={!!casino.bonuses?.data.length}
+              slug={casino.slug}
+              features={casino.casinoHeading}
+            />
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={9} lg={9}>
+              <Article title={t.casinoItem.articleTitle} sections={casino.sections} />
+            </Grid>
+            <Grid item xs={0} md={3} lg={3}>
+              <ScrollSidebar sections={casino.sections.filter((item) => item?.title)} />
+            </Grid>
+          </Grid>
+        </Grid>
 
-      {/* <Background /> */}
-    </Box>
+        <ScrollTop />
+
+        {/* <Background /> */}
+      </Box>
+    </>
   )
 }
 

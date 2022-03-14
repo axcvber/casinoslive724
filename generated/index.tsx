@@ -34,6 +34,7 @@ export type Bonus = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<BonusRelationResponseCollection>;
   sections: Array<Maybe<ComponentSectionsSections>>;
+  seo: ComponentSeoSeo;
   slug?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -90,6 +91,7 @@ export type BonusInput = {
   casino?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<Scalars['ID']>;
   sections?: InputMaybe<Array<InputMaybe<ComponentSectionsSectionsInput>>>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -105,6 +107,7 @@ export type BonusesPage = {
   heading: ComponentHeadingPage;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<BonusesPageRelationResponseCollection>;
+  seo: ComponentSeoSeo;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -121,6 +124,7 @@ export type BonusesPageEntityResponse = {
 
 export type BonusesPageInput = {
   heading?: InputMaybe<ComponentHeadingPageInput>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
 };
 
 export type BonusesPageRelationResponseCollection = {
@@ -165,6 +169,7 @@ export type Casino = {
   rating: Scalars['Float'];
   referralLink: Scalars['String'];
   sections: Array<Maybe<ComponentSectionsSections>>;
+  seo: ComponentSeoSeo;
   showOnHomepage?: Maybe<Scalars['Boolean']>;
   slug?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -244,6 +249,7 @@ export type CasinoInput = {
   rating?: InputMaybe<Scalars['Float']>;
   referralLink?: InputMaybe<Scalars['String']>;
   sections?: InputMaybe<Array<InputMaybe<ComponentSectionsSectionsInput>>>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
   showOnHomepage?: InputMaybe<Scalars['Boolean']>;
   slug?: InputMaybe<Scalars['String']>;
 };
@@ -259,6 +265,7 @@ export type CasinosPage = {
   heading: ComponentHeadingPage;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<CasinosPageRelationResponseCollection>;
+  seo: ComponentSeoSeo;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -275,6 +282,7 @@ export type CasinosPageEntityResponse = {
 
 export type CasinosPageInput = {
   heading?: InputMaybe<ComponentHeadingPageInput>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
 };
 
 export type CasinosPageRelationResponseCollection = {
@@ -376,57 +384,22 @@ export type ComponentSectionsSectionsInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
-export type ComponentSharedMetaSocial = {
-  __typename?: 'ComponentSharedMetaSocial';
-  description: Scalars['String'];
+export type ComponentSeoSeo = {
+  __typename?: 'ComponentSeoSeo';
+  canonicalURL: Scalars['String'];
   id: Scalars['ID'];
-  image?: Maybe<UploadFileEntityResponse>;
-  socialNetwork: Enum_Componentsharedmetasocial_Socialnetwork;
-  title: Scalars['String'];
-};
-
-export type ComponentSharedMetaSocialFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>;
-  description?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentSharedMetaSocialFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>;
-  socialNetwork?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-};
-
-export type ComponentSharedMetaSocialInput = {
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  image?: InputMaybe<Scalars['ID']>;
-  socialNetwork?: InputMaybe<Enum_Componentsharedmetasocial_Socialnetwork>;
-  title?: InputMaybe<Scalars['String']>;
-};
-
-export type ComponentSharedSeo = {
-  __typename?: 'ComponentSharedSeo';
-  canonicalURL?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  keywords?: Maybe<Scalars['String']>;
+  keywords: Scalars['String'];
   metaDescription: Scalars['String'];
   metaImage: UploadFileEntityResponse;
-  metaSocial?: Maybe<Array<Maybe<ComponentSharedMetaSocial>>>;
   metaTitle: Scalars['String'];
 };
 
-
-export type ComponentSharedSeoMetaSocialArgs = {
-  filters?: InputMaybe<ComponentSharedMetaSocialFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ComponentSharedSeoInput = {
+export type ComponentSeoSeoInput = {
   canonicalURL?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   keywords?: InputMaybe<Scalars['String']>;
   metaDescription?: InputMaybe<Scalars['String']>;
   metaImage?: InputMaybe<Scalars['ID']>;
-  metaSocial?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialInput>>>;
   metaTitle?: InputMaybe<Scalars['String']>;
 };
 
@@ -457,6 +430,7 @@ export type Coupon = {
   link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<CouponRelationResponseCollection>;
+  seo: ComponentSeoSeo;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -501,6 +475,7 @@ export type CouponFiltersInput = {
 export type CouponInput = {
   image?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -515,6 +490,7 @@ export type CouponsPage = {
   heading: ComponentHeadingPage;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<CouponsPageRelationResponseCollection>;
+  seo: ComponentSeoSeo;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -531,6 +507,7 @@ export type CouponsPageEntityResponse = {
 
 export type CouponsPageInput = {
   heading?: InputMaybe<ComponentHeadingPageInput>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
 };
 
 export type CouponsPageRelationResponseCollection = {
@@ -561,12 +538,6 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
-export enum Enum_Componentsharedmetasocial_Socialnetwork {
-  Facebook = 'Facebook',
-  Telegram = 'Telegram',
-  Twitter = 'Twitter'
-}
-
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -596,7 +567,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Bonus | BonusesPage | Casino | CasinosPage | ComponentBannerGifsBannerGifs | ComponentCasinoHeadingCasinoHeading | ComponentHeadingPage | ComponentPopupPopup | ComponentSectionsSections | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentSocialNetworksSocialNetworks | Coupon | CouponsPage | HomePage | I18NLocale | Theme | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Bonus | BonusesPage | Casino | CasinosPage | ComponentBannerGifsBannerGifs | ComponentCasinoHeadingCasinoHeading | ComponentHeadingPage | ComponentPopupPopup | ComponentSectionsSections | ComponentSeoSeo | ComponentSocialNetworksSocialNetworks | Coupon | CouponsPage | HomePage | I18NLocale | Theme | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type HomePage = {
   __typename?: 'HomePage';
@@ -605,7 +576,7 @@ export type HomePage = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<HomePageRelationResponseCollection>;
   popup: ComponentPopupPopup;
-  seo: ComponentSharedSeo;
+  seo: ComponentSeoSeo;
   subtitle: Scalars['String'];
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -632,7 +603,7 @@ export type HomePageEntityResponse = {
 export type HomePageInput = {
   gifs?: InputMaybe<Array<InputMaybe<ComponentBannerGifsBannerGifsInput>>>;
   popup?: InputMaybe<ComponentPopupPopupInput>;
-  seo?: InputMaybe<ComponentSharedSeoInput>;
+  seo?: InputMaybe<ComponentSeoSeoInput>;
   subtitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -1584,7 +1555,7 @@ export type BonusItemPropsQueryVariables = Exact<{
 }>;
 
 
-export type BonusItemPropsQuery = { __typename?: 'Query', bonuses?: { __typename?: 'BonusEntityResponseCollection', data: Array<{ __typename?: 'BonusEntity', attributes?: { __typename?: 'Bonus', title: string, bonusReferralLink: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null }, sections: Array<{ __typename?: 'ComponentSectionsSections', id: string, title: string, content?: string | null } | null>, casino?: { __typename?: 'CasinoEntityResponse', data?: { __typename?: 'CasinoEntity', attributes?: { __typename?: 'Casino', name: string, slug?: string | null, rating: number } | null } | null } | null } | null }> } | null };
+export type BonusItemPropsQuery = { __typename?: 'Query', bonuses?: { __typename?: 'BonusEntityResponseCollection', data: Array<{ __typename?: 'BonusEntity', attributes?: { __typename?: 'Bonus', title: string, bonusReferralLink: string, seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null }, sections: Array<{ __typename?: 'ComponentSectionsSections', id: string, title: string, content?: string | null } | null>, casino?: { __typename?: 'CasinoEntityResponse', data?: { __typename?: 'CasinoEntity', attributes?: { __typename?: 'Casino', name: string, slug?: string | null, rating: number } | null } | null } | null } | null }> } | null };
 
 export type BonusItemPathQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1623,7 +1594,7 @@ export type CasinoItemPropsQueryVariables = Exact<{
 }>;
 
 
-export type CasinoItemPropsQuery = { __typename?: 'Query', casinos?: { __typename?: 'CasinoEntityResponseCollection', data: Array<{ __typename?: 'CasinoEntity', attributes?: { __typename?: 'Casino', name: string, slug?: string | null, referralLink: string, rating: number, logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null }, bonuses?: { __typename?: 'BonusRelationResponseCollection', data: Array<{ __typename?: 'BonusEntity', id?: string | null }> } | null, casinoHeading: Array<{ __typename?: 'ComponentCasinoHeadingCasinoHeading', id: string, title: string, desc: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } | null>, sections: Array<{ __typename?: 'ComponentSectionsSections', id: string, title: string, content?: string | null } | null> } | null }> } | null };
+export type CasinoItemPropsQuery = { __typename?: 'Query', casinos?: { __typename?: 'CasinoEntityResponseCollection', data: Array<{ __typename?: 'CasinoEntity', attributes?: { __typename?: 'Casino', name: string, slug?: string | null, referralLink: string, rating: number, seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null }, bonuses?: { __typename?: 'BonusRelationResponseCollection', data: Array<{ __typename?: 'BonusEntity', id?: string | null }> } | null, casinoHeading: Array<{ __typename?: 'ComponentCasinoHeadingCasinoHeading', id: string, title: string, desc: string, icon: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } | null>, sections: Array<{ __typename?: 'ComponentSectionsSections', id: string, title: string, content?: string | null } | null> } | null }> } | null };
 
 export type CasinoItemPathQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1644,28 +1615,28 @@ export type HomePageQueryVariables = Exact<{
 }>;
 
 
-export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', title: string, subtitle: string, popup: { __typename?: 'ComponentPopupPopup', active?: boolean | null, link: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } }, gifs: Array<{ __typename?: 'ComponentBannerGifsBannerGifs', id: string, link: string, gif: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } | null> } | null } | null } | null };
+export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', title: string, subtitle: string, seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, popup: { __typename?: 'ComponentPopupPopup', active?: boolean | null, link: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } }, gifs: Array<{ __typename?: 'ComponentBannerGifsBannerGifs', id: string, link: string, gif: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } | null> } | null } | null } | null };
 
 export type CasinosPageQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 
-export type CasinosPageQuery = { __typename?: 'Query', casinosPage?: { __typename?: 'CasinosPageEntityResponse', data?: { __typename?: 'CasinosPageEntity', attributes?: { __typename?: 'CasinosPage', heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } } } | null } | null } | null };
+export type CasinosPageQuery = { __typename?: 'Query', casinosPage?: { __typename?: 'CasinosPageEntityResponse', data?: { __typename?: 'CasinosPageEntity', attributes?: { __typename?: 'CasinosPage', seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } } } | null } | null } | null };
 
 export type BonusesPageQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 
-export type BonusesPageQuery = { __typename?: 'Query', bonusesPage?: { __typename?: 'BonusesPageEntityResponse', data?: { __typename?: 'BonusesPageEntity', attributes?: { __typename?: 'BonusesPage', heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } } | null } | null } | null };
+export type BonusesPageQuery = { __typename?: 'Query', bonusesPage?: { __typename?: 'BonusesPageEntityResponse', data?: { __typename?: 'BonusesPageEntity', attributes?: { __typename?: 'BonusesPage', seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } } | null } | null } | null };
 
 export type CouponsPageQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 
-export type CouponsPageQuery = { __typename?: 'Query', couponsPage?: { __typename?: 'CouponsPageEntityResponse', data?: { __typename?: 'CouponsPageEntity', attributes?: { __typename?: 'CouponsPage', heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } } | null } | null } | null };
+export type CouponsPageQuery = { __typename?: 'Query', couponsPage?: { __typename?: 'CouponsPageEntityResponse', data?: { __typename?: 'CouponsPageEntity', attributes?: { __typename?: 'CouponsPage', seo: { __typename?: 'ComponentSeoSeo', metaTitle: string, metaDescription: string, keywords: string, canonicalURL: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, heading: { __typename?: 'ComponentHeadingPage', title: string, subtitle: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } } } | null } | null } | null };
 
 export type CmsThemeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1746,9 +1717,22 @@ export type BonusesLazyQueryHookResult = ReturnType<typeof useBonusesLazyQuery>;
 export type BonusesQueryResult = Apollo.QueryResult<BonusesQuery, BonusesQueryVariables>;
 export const BonusItemPropsDocument = gql`
     query BonusItemProps($bonusSlug: String!, $locale: I18NLocaleCode) {
-  bonuses(filters: {slug: {eq: $bonusSlug}}, locale: $locale) {
+  bonuses(filters: {slug: {eq: $bonusSlug}}, sort: "id:desc", locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         title
         image {
           data {
@@ -2039,6 +2023,19 @@ export const CasinoItemPropsDocument = gql`
   casinos(filters: {slug: {eq: $casinoSlug}}, locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         name
         slug
         logo {
@@ -2217,6 +2214,19 @@ export const HomePageDocument = gql`
   homePage(locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         title
         subtitle
         popup {
@@ -2281,6 +2291,19 @@ export const CasinosPageDocument = gql`
   casinosPage(locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         heading {
           title
           subtitle
@@ -2331,6 +2354,19 @@ export const BonusesPageDocument = gql`
   bonusesPage(locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         heading {
           title
           subtitle
@@ -2381,6 +2417,19 @@ export const CouponsPageDocument = gql`
   couponsPage(locale: $locale) {
     data {
       attributes {
+        seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          canonicalURL
+        }
         heading {
           title
           subtitle

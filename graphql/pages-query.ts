@@ -5,6 +5,19 @@ export const HOME_PAGE_QUERY = gql`
     homePage(locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           title
           subtitle
           popup {
@@ -42,6 +55,19 @@ export const CASINOS_PAGE_QUERY = gql`
     casinosPage(locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           heading {
             title
             subtitle
@@ -65,6 +91,19 @@ export const BONUSES_PAGE_QUERY = gql`
     bonusesPage(locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           heading {
             title
             subtitle
@@ -88,6 +127,19 @@ export const COUPONS_PAGE_QUERY = gql`
     couponsPage(locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           heading {
             title
             subtitle

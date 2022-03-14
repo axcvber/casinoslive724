@@ -8,6 +8,7 @@ import useLocale from '../../locales/useLocale'
 import Background from '../../components/Background'
 import { CasinosPage, CasinosPageQuery, CasinosPageQueryVariables, useCasinosQuery } from '../../generated'
 import { CASINOS_PAGE_QUERY } from '../../graphql/pages-query'
+import { NextSeo } from 'next-seo'
 
 interface ICasinosPage {
   casinosPage: CasinosPage
@@ -27,6 +28,29 @@ const Casinos: NextPage<ICasinosPage> = ({ casinosPage }) => {
 
   return (
     <>
+      <NextSeo
+        title={casinosPage.seo.metaTitle}
+        description={casinosPage.seo.metaDescription}
+        canonical={casinosPage.seo.canonicalURL}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: casinosPage.seo.keywords,
+          },
+        ]}
+        openGraph={{
+          title: casinosPage.seo.metaTitle,
+          description: casinosPage.seo.metaDescription,
+          url: casinosPage.seo.canonicalURL,
+          images: [
+            {
+              url: casinosPage.seo.metaImage.data?.attributes?.url || '',
+              width: 400,
+              height: 300,
+            },
+          ],
+        }}
+      />
       <Heading
         img={casinosPage.heading.image.data?.attributes}
         title={casinosPage.heading.title}

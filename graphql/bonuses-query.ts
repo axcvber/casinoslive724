@@ -47,6 +47,19 @@ export const BONUS_ITEM_PROPS_QUERY = gql`
     bonuses(filters: { slug: { eq: $bonusSlug } }, sort: "id:desc", locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           title
           image {
             data {

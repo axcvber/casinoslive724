@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { AiFillGift } from 'react-icons/ai'
 import Background from '../../components/Background'
@@ -27,6 +28,29 @@ const Bonuses: NextPage<IBonusesPage> = ({ bonusesPage }) => {
 
   return (
     <>
+      <NextSeo
+        title={bonusesPage.seo.metaTitle}
+        description={bonusesPage.seo.metaDescription}
+        canonical={bonusesPage.seo.canonicalURL}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: bonusesPage.seo.keywords,
+          },
+        ]}
+        openGraph={{
+          title: bonusesPage.seo.metaTitle,
+          description: bonusesPage.seo.metaDescription,
+          url: bonusesPage.seo.canonicalURL,
+          images: [
+            {
+              url: bonusesPage.seo.metaImage.data?.attributes?.url || '',
+              width: 400,
+              height: 300,
+            },
+          ],
+        }}
+      />
       <Heading
         img={bonusesPage.heading.image.data?.attributes}
         title={bonusesPage.heading.title}

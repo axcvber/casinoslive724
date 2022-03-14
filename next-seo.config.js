@@ -2,8 +2,8 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.url.ie/',
-    site_name: 'SiteName',
+    url: 'https://casinoslive724.com',
+    site_name: 'CasinosLive',
   },
   twitter: {
     handle: '@handle',

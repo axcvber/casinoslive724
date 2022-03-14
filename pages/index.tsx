@@ -11,6 +11,7 @@ import useLocale from '../locales/useLocale'
 import { useRouter } from 'next/router'
 import { HomePage, HomePageQuery, HomePageQueryVariables, useTopCasinosQuery } from '../generated'
 import { HOME_PAGE_QUERY } from '../graphql/pages-query'
+import { NextSeo } from 'next-seo'
 
 interface IHomePage {
   homePage: HomePage
@@ -40,9 +41,29 @@ const Home: NextPage<IHomePage> = ({ homePage }) => {
 
   return (
     <>
-      <Head>
-        <title>Casinos live</title>
-      </Head>
+      <NextSeo
+        title={homePage.seo.metaTitle}
+        description={homePage.seo.metaDescription}
+        canonical={homePage.seo.canonicalURL}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: homePage.seo.keywords,
+          },
+        ]}
+        openGraph={{
+          title: homePage.seo.metaTitle,
+          description: homePage.seo.metaDescription,
+          url: homePage.seo.canonicalURL,
+          images: [
+            {
+              url: homePage.seo.metaImage.data?.attributes?.url || '',
+              width: 400,
+              height: 300,
+            },
+          ],
+        }}
+      />
 
       <Hero title={homePage.title} subtitle={homePage.subtitle} />
       <Banners data={homePage.gifs} />

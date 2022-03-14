@@ -74,6 +74,19 @@ export const CASINO_ITEM_PROPS_QUERY = gql`
     casinos(filters: { slug: { eq: $casinoSlug } }, locale: $locale) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            canonicalURL
+          }
           name
           slug
           logo {
