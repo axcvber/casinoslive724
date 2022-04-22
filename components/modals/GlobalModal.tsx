@@ -11,12 +11,13 @@ export enum MODAL_TYPES {
   COUPON_MODAL = 'COUPON_MODAL',
 }
 
-const MODAL_COMPONENTS: any = {
+const newVar = {
   [MODAL_TYPES.CONTACT_US_MODAL]: ContactUsModal,
   [MODAL_TYPES.INITIAL_MODAL]: InitialModal,
   [MODAL_TYPES.BONUSES_MODAL]: BonusesModal,
   [MODAL_TYPES.COUPON_MODAL]: CouponModal,
-}
+};
+const MODAL_COMPONENTS: any = newVar
 
 interface IStore {
   modalType: string
